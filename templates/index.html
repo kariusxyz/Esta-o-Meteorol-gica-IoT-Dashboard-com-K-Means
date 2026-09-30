@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel K-Means | Estação ESP32</title>
+    <!-- Ligação com o arquivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Painel de Sensores K-Means</h1>
+        <p>Dados importados do Firebase Realtime Database</p>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Coluna Esquerda: Gráfico Gerado pelo Python -->
+        <article class="card">
+            <h2>Clusters Climáticos (Temp vs Umidade)</h2>
+            <div class="chart-container">
+                <img id="grafico-kmeans" src="" alt="Carregando gráfico K-Means..." style="display: none;">
+                <span id="loading-grafico" class="loading">Executando algoritmo no servidor...</span>
+            </div>
+        </article>
+
+        <!-- Coluna Direita: Tabela de Dados Brutos -->
+        <article class="card">
+            <h2>Últimos Registros</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Temp (°C)</th>
+                            <th>Humidity (%)</th>
+                            <th>Light</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-corpo">
+                        <tr><td colspan="4" class="loading">Lendo banco de dados...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+    </div>
+
+    <!-- Ligação com o arquivo JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
